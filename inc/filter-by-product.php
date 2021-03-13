@@ -20,26 +20,7 @@ class Filter_By_Product extends Filter_By {
 		global $wpdb;
 
 		$status    = apply_filters( 'wfobp_product_status', 'publish' );
-		$sql       = "SELECT ID,post_title FROM $wpdb->posts WHERE ";
-
-		$where_post_type  = apply_filters( 'wfobp_filter_post_types', [ 'product' ] );
-		$count_post_types = count( $where_post_type );
-		if ( $count_post_types == 1 ) {
-			$post_types = "post_type = '" . $where_post_type[0] . "'";
-		} elseif ( $count_post_types > 1 ) {
-			$post_types = "(";
-			$index      = 0;
-			foreach ( $where_post_type as $post_type ) {
-				$post_types .= "post_type = '" . $post_type . "'";
-				$index ++;
-				if ( $count_post_types > $index ) {
-					$post_types .= " OR ";
-				}
-			}
-			$post_types .= ")";
-		}
-		$sql .= $post_types;
-
+		$sql       = "SELECT ID,post_title FROM $wpdb->posts WHERE (post_type = 'product' OR post_type = 'product_variation') ";
 		$sql       .= ( $status == 'any' ) ? '' : " AND post_status = '$status'";
 		$all_posts = $wpdb->get_results( $sql, ARRAY_A );
 
