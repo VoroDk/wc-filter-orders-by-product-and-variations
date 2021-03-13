@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WooCommerce Filter Orders by Product or product variation
  * Description: This plugin lets you filter the WooCommerce Orders by any product or product variation.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: VoroDk
  * Text Domain: woocommerce-filter-orders-by-product
  * License: GNU General Public License v3.0
@@ -14,7 +14,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'WFOBP_VERSION', '1.0.0' );
+define( 'WFOBP_VERSION', '1.1.0' );
 define( 'WFOBP_PATH'   , plugin_dir_path( __FILE__ ) );
 
 final class WFOBP {
